@@ -1,0 +1,3 @@
+awk -F '\t' '{print $2, $4}' colours.txt
+sed -n -e '/\tGreen\t(/p' colours.txt | awk -F '\t' '{print $4}'
+sed -n -e '/\tGreen\t(/p' colours.txt | awk -F '\t' '{print $4}' | tr -d '[]' | awk -F ',' '{print $1 " and "$2}'
