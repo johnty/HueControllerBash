@@ -10,6 +10,18 @@ then
         exit
 fi
 
+if [ ! -f api.txt ];
+then
+	echo ERROR: please add an api.txt with an authorized key!
+	exit
+fi
+
+if [ ! -f ip.txt ];
+then
+	echo ERROR: please add an ip.txt with IP of bridge!
+	exit
+fi
+
 echo LIGHT_IDX = "${LIGHT_IDX}"
 echo IS_ON = "${IS_ON}"
 echo BRI_VAL = "${BRI_VAL}"
