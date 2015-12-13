@@ -1,3 +1,5 @@
+#NOTE: this assumes "Gamut A". the colours.txt file contains B and C as well, which are on columns 5 and 6 respectively (replace where it says {print $4}. this applies to getY.sh as well, of course...
+
 COLOUR=$1
 #echo Retreiving X value for ${COLOUR}
 tmp="/\t${COLOUR}\t(/p"
