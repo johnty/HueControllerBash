@@ -1,4 +1,6 @@
-a few simple bash scripts for controlling hue lights using curl commands.
+#HueControllerBash
+
+A few simple bash scripts for controlling hue lights using curl commands. contains some personal learning experiments with bash scripting, as well as rudimentary interactions with the Philips Hue API. Comments, corrections, suggestions and requests welcome!
 
 ##HueControllerSimple.sh:
 A simple script that allows you to specify the index, on/off, brightness, and x/y gamut value of a light on a bridge.
