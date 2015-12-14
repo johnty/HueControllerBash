@@ -98,4 +98,4 @@ fi;
 JSON_DATA=${JSON_DATA}"}" #close bracket
 echo JSON_DATA = ${JSON_DATA}
 
-curl --request PUT --data ${JSON_DATA} ${BASE_URL}
+curl --request PUT --data ${JSON_DATA} ${BASE_URL} --max-time 5

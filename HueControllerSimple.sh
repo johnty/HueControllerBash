@@ -52,4 +52,4 @@ JSON_DATA="{"\"on\":${tf_str},\"bri\":${BRI_VAL},\"xy\":[${X_VAL},${Y_VAL}]"}"
 
 echo JSON_DATA = ${JSON_DATA}
 
-curl --request PUT --data ${JSON_DATA} ${BASE_URL}
+curl --request PUT --data ${JSON_DATA} ${BASE_URL} --max-time 5
