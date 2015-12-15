@@ -1,0 +1,1 @@
+grep -P '\tYellow\t' colours.txt | awk -F '\t' '{print }' | sed -n 's/\[//; s/\]//; p'
