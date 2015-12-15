@@ -24,6 +24,13 @@ while true; do
       ./setXY.sh $i $XY_VAL
    done
    sleep 2;
+
+   XY_VAL=`./getXY.sh White`
+   for ((i=1; i<=$1; i++)); do
+      ./setXY.sh $i $XY_VAL 
+
+   done
+   sleep 2;
 done
  
  
