@@ -1,3 +1,5 @@
 awk -F '\t' '{print $2, $4}' colours.txt
 sed -n -e '/\tGreen\t(/p' colours.txt | awk -F '\t' '{print $4}'
 sed -n -e '/\tGreen\t(/p' colours.txt | awk -F '\t' '{print $4}' | tr -d '[]' | awk -F ',' '{print $1 " and "$2}'
+
+curl -s http://192.168.100.230/api/b225912329de4371bdc4d2e18678263/lights/1/ | grep -Po '(?<="on":).*(?=\,"bri")'
