@@ -29,6 +29,11 @@ requires two .txt files in the same folder:
 api.txt containing the API key
 ip.txt containing the IP address of the bridge
 
+
+##HueControllerBri.sh:
+A simpler script that sets brightness for a given index. We may want to do this instead of sending the on/off message, as an on/off command  is a bit slower than brightness (and hue) adjustments.
+
+./HueControllerBri.sh [idx] [bri]
 ---
 
 ###colours.txt
