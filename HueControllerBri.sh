@@ -1,8 +1,11 @@
+# Sets the brightness value of light at index
+# (this is faster than turning it on/off and setting brightness at same time)
+
 LIGHT_IDX=$1
 BRI_VAL=$2
 if [ $# != 2 ];
 then
-	echo usage: ./HueControllerSimple [idx] [bri] 
+	echo usage: ./HueControllerBri [idx] [bri] 
 	echo "(is_on should be 0 or 1; bri = 0 - 255)"
         exit
 fi
