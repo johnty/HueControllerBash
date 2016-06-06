@@ -10,6 +10,7 @@ function ctrl_c() {
    exit 0
 }
 echo PiShield Hue Brightness Controller...
+cd .. #other scripts in parent folder!
 while true;
 do
    #read Analog ch 0:
@@ -17,8 +18,6 @@ do
    BRI=`expr $VAL / 4`
    #echo BRI = $BRI
    #set Hue brightness
-   cd .. #hack
    ./HueControllerBri.sh 1 $BRI &> /dev/null
-   cd pi #hack
    sleep 0.1
 done
