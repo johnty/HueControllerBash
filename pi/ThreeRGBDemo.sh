@@ -14,6 +14,8 @@ SENS1=0
 SENS2=0
 SENS3=0
 
+BRI1=0
+ON1=0
 
 #trap ctrl_c
 trap ctrl_c INT
@@ -30,6 +32,7 @@ function on_off() {
    ./HueOnOff.sh 2 $1 &> /dev/null
    ./HueOnOff.sh 3 $1 &> /dev/null
    ./HueOnOff.sh 4 $1 &> /dev/null
+   ON1="$1"
 }
 
 echo PiShield Hue Sensor and RGB Hue Lights demo
@@ -39,6 +42,9 @@ cd .. # go up dir since all tools are there...
 # (in this case, the first 4...)
 
 on_off 1
+./HueColour.sh 2 Cyan
+./HueColour.sh 3 Yellow
+./HueColour.sh 4 Red
 
 while true;
 do
@@ -46,10 +52,26 @@ do
    SENS1=`gpio -x mcp3004:100:0 aread 100`
    SENS2=`gpio -x mcp3004:100:0 aread 101`
    SENS3=`gpio -x mcp3004:100:0 aread 102`
-   BRI=`expr $SENS1 / 4`
+   BRI1=`expr $SENS1 / 4`
    #echo BRI = $BRI
    #set Hue brightness
-   ./HueControllerBri.sh 1 $BRI &> /dev/null
+   if [ "$BRI1" -gt 10 ];
+   then
+      if [ "$ON1" -eq 0 ];
+      then
+         echo "was off, turn on"
+         ./HueOnOff.sh 1 1
+         ON1=1
+      fi
+      ./HueControllerBri.sh 1 $BRI1 &> /dev/null
+   else
+      if [ "$ON1" -eq 1 ];
+      then
+         echo was on, turn off
+         ./HueOnOff.sh 1 0
+         ON1=0
+      fi
+   fi
    echo $SENS1 $SENS2 $SENS3
    sleep 0.05
 done
