@@ -42,8 +42,8 @@ cd .. # go up dir since all tools are there...
 # (in this case, the first 4...)
 
 on_off 1
-./HueColour.sh 2 Cyan
-./HueColour.sh 3 Yellow
+./HueColour.sh 2 Blue
+./HueColour.sh 3 Green
 ./HueColour.sh 4 Red
 
 while true;
@@ -60,18 +60,42 @@ do
       if [ "$ON1" -eq 0 ];
       then
          echo "was off, turn on"
-         ./HueOnOff.sh 1 1
-         ON1=1
+         on_off 1
       fi
-      ./HueControllerBri.sh 1 $BRI1 &> /dev/null
+      ./HueControllerBri.sh 2 $BRI1 &> /dev/null
+      ./HueControllerBri.sh 3 $BRI1 &> /dev/null
+      ./HueControllerBri.sh 4 $BRI1 &> /dev/null
    else
       if [ "$ON1" -eq 1 ];
       then
          echo was on, turn off
-         ./HueOnOff.sh 1 0
-         ON1=0
+         on_off 0
       fi
    fi
+
+   if [ "$SENS2" -gt 700 ];
+   then
+      ./HueColour.sh 2 Red &> /dev/null
+      ./HueColour.sh 3 Red &> /dev/null
+      ./HueColour.sh 4 Red &> /dev/null
+   fi
+
+   if [ "$SENS2" -lt 650 ];
+   then
+      if [ "$SENS2" -gt 300 ];
+      then
+         ./HueColour.sh 2 Blue &> /dev/null
+         ./HueColour.sh 3 Yellow &> /dev/null
+         ./HueColour.sh 4 Red &> /dev/null
+      fi
+      if [ "$SENS2" -lt 250 ];
+      then
+         ./HueColour.sh 2 White &> /dev/null
+         ./HueColour.sh 3 White &> /dev/null
+         ./HueColour.sh 4 White &> /dev/null
+      fi
+   fi
+
    echo $SENS1 $SENS2 $SENS3
-   sleep 0.05
+   sleep 0.1
 done
